@@ -7,7 +7,9 @@ import com.springboot.blog.payload.CommentDto;
 import com.springboot.blog.repository.CommentRepository;
 import com.springboot.blog.repository.PostRepository;
 import com.springboot.blog.service.CommentService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CommentServiceImpl implements CommentService {
 
     private CommentRepository commentRepository;
@@ -32,7 +34,6 @@ public class CommentServiceImpl implements CommentService {
 
     private CommentDto mapToDTO(Comment comment){
         CommentDto commentDto = new CommentDto();
-
         commentDto.setId(comment.getId());
         commentDto.setName(comment.getName());
         commentDto.setEmail(comment.getEmail());
@@ -42,11 +43,10 @@ public class CommentServiceImpl implements CommentService {
 
     private Comment mapToEntity(CommentDto commentDto){
         Comment comment = new Comment();
-        comment.setId(comment.getId());
-        comment.setName(comment.getName());
-        comment.setEmail(comment.getEmail());
-        comment.setBody(comment.getBody());
+        comment.setId(commentDto.getId());
+        comment.setName(commentDto.getName());
+        comment.setEmail(commentDto.getEmail());
+        comment.setBody(commentDto.getBody());
         return comment;
     }
-
 }
