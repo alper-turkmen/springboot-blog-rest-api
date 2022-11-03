@@ -31,10 +31,9 @@ public class Post {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     //Set can contain one item one time
-
     //orphanremove means whenever we remove parent it removes
     //cascadetype.ALL means propagates all operations from a parent to a child entity
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Comment> comments = new HashSet<>();
 }
