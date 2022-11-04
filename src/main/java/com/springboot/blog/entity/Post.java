@@ -1,18 +1,17 @@
 package com.springboot.blog.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+//@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 //JPA is smart enough to name table posts if we dont specify
 @Table(name = "posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})})
