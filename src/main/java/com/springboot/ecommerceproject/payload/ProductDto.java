@@ -1,6 +1,10 @@
 package com.springboot.ecommerceproject.payload;
 import lombok.Data;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Set;
@@ -9,22 +13,43 @@ import java.util.Set;
 public class ProductDto {
     private long id;
 
-    //title not should be empty or null
-    //title should have at least 2 character
     @NotEmpty
-    @Size(min = 2, message = "Product title should have at least two characters")
-    private String title;
-
-    //description not should be empty or null
-    //description should have at least 2 character
+    private String latitude;
     @NotEmpty
-    @Size(min = 10, message = "Product description should have at least 10 characters")
-    private String description;
+    private String longitude;
 
-
-    //description not should be empty or null
-    //description should have at least 2 character
     @NotEmpty
-    private String content;
-    private Set<CommentDto> comments;
+    private String turu;
+
+    @NotEmpty
+    private String cinsi;
+
+    @NotEmpty
+    private String dogum;
+
+    @NotEmpty
+    private String gender;
+
+    @NotEmpty
+    private String childs;
+
+    @NotEmpty
+    private String irki;
+
+    @NotEmpty
+    private String vet;
+
+    @NotEmpty
+    private String hastalik;
+
+    @NotEmpty
+    private String geo;
+
+    @NotEmpty
+    private String lastlocationdate;
+
+
+
+
+
 }

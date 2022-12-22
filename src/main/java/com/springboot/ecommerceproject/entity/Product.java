@@ -14,25 +14,50 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 //JPA is smart enough to name table posts if we dont specify
-@Table(name = "products", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})})
+@Table(name = "pets")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title", nullable = false)
-    private String title;
-    //JPA is smart enought to name the column name as the field name
+    @Column(name = "turu", nullable = false)
+    private String turu;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "cinsi", nullable = false)
+    private String cinsi;
 
-    @Column(name = "content", nullable = false)
-    private String content;
+    @Column(name = "dogum", nullable = false)
+    private String dogum;
 
-    //Set can contain one item one time
-    //orphanremove means whenever we remove parent it removes
-    //cascadetype.ALL means propagates all operations from a parent to a child entity
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Comment> comments = new HashSet<>();
+    @Column(name = "gender", nullable = false)
+    private String gender;
+
+    @Column(name = "childs", nullable = false)
+    private String childs;
+
+
+    @Column(name = "irki", nullable = false)
+    private String irki;
+
+    @Column(name = "vet", nullable = false)
+    private String vet;
+
+    @Column(name = "hastalik", nullable = false)
+    private String hastalik;
+
+    @Column(name = "geo", nullable = false)
+    private String geo;
+
+    @Column(name = "latitude", nullable = false)
+    private String latitude;
+
+
+    @Column(name = "longitude", nullable = false)
+    private String longitude;
+
+    @Column(name = "lastlocationdate", nullable = false)
+    private String lastlocationdate;
+
+
+
 }

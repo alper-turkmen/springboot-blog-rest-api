@@ -73,10 +73,9 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto updateProduct(ProductDto productDto, long id) {
         //get post by id from the db
         Product product = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
-        product.setTitle(productDto.getTitle());
-        product.setDescription(productDto.getDescription());
-        product.setContent(productDto.getContent());
-
+        product.setLatitude(productDto.getLatitude());
+        product.setLongitude(productDto.getLongitude());
+        product.setLastlocationdate(productDto.getLastlocationdate());
         Product updatedProduct = productRepository.save(product);
         return mapToDTO(updatedProduct);
     }
