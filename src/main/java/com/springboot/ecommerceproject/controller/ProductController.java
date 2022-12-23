@@ -43,19 +43,29 @@ public class ProductController {
     }
 
     //get post by id
-    @GetMapping("/{id}")
+    @GetMapping("/getsingle/{id}")
     public ResponseEntity<ProductDto> getProductById(@PathVariable(name = "id") long id){
         return ResponseEntity.ok(productService.getProductById(id));
     }
 
+
     //update post by id rest api
-    @PostMapping("/{id}")
-    public ResponseEntity<ProductDto> updateProduct( @RequestBody ProductDto productDto, @PathVariable(name = "id") long id){
+    @GetMapping("/send/{id}")
+    public ResponseEntity<ProductDto> updateProduct(
+            @RequestParam(value = "lat", required = false) String lat,
+            @RequestParam(value = "lon", required = false) String lon,
+            @PathVariable(name = "id") long id
+){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now(ZoneId.of("GMT+03:00"));
         DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");;
         String formattedString = now.format(customFormat);
+        ProductDto productDto = new ProductDto();
+
+        productDto.setLatitude(lat);
+        productDto.setLongitude(lon);
         productDto.setLastlocationdate(formattedString);
+
         ProductDto productResponse = productService.updateProduct(productDto, id);
         return new ResponseEntity<>(productResponse, HttpStatus.OK);
     }
