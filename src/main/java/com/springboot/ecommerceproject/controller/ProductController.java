@@ -69,7 +69,19 @@ public class ProductController {
         ProductDto productResponse = productService.updateProduct(productDto, id);
         return new ResponseEntity<>(productResponse, HttpStatus.OK);
     }
+    //UPDATE POST
+    @PostMapping("/{id}")
+    public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto productDto, @PathVariable(name = "id") long id){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("GMT+03:00"));
+        DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");;
+        String formattedString = now.format(customFormat);
 
+        productDto.setLastlocationdate(formattedString);
+
+        ProductDto productResponse = productService.updateProduct(productDto, id);
+        return new ResponseEntity<>(productResponse, HttpStatus.OK);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable(name = "id") long id){
         productService.deleteProductById(id);
